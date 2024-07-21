@@ -1,0 +1,21 @@
+name: announce_pr
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Discord webhook
+        run: |
+          curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST --data \
+          "{\"username\": \"Github\", \"content\": \"\
+          :grey_question: New pull request at *$GITHUB_REPOSITORY* by *$GITHUB_ACTOR* - \
+          [Click me]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA) - **Please review!**\n:loudspeaker: Title: *$(git show -s --format=%s)*\
+          \"}" ${{ secrets.WEBHOOKURL }}
