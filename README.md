@@ -1,1 +1,1 @@
-will be filled later
+Simple actions to send Github pushes and opened PRs to some discord channel via webhook
