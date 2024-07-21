@@ -16,6 +16,6 @@ jobs:
         run: |
           curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST --data \
           "{\"username\": \"Github\", \"avatar_url\": \"${{ secrets.AVATARURL }}\", \"content\": \"\
-          :white_check_mark: New commit pushed to [*$GITHUB_REPOSITORY*](https://github.com/$GITHUB_REPOSITORY) by [*$GITHUB_ACTOR*](https://github.com/$GITHUB_ACTOR) - \
+          :white_check_mark: New commit pushed to [*$GITHUB_REPOSITORY*]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY) by [*$GITHUB_ACTOR*]($GITHUB_SERVER_URL/$GITHUB_ACTOR) - \
           [Click me]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA)\n\
           :loudspeaker: Title: *$(git show -s --format=%s)*\"}" ${{ secrets.WEBHOOKURL }}
