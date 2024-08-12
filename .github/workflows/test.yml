@@ -13,5 +13,5 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - uses: kceb/pull-request-url-action@v1
-          id: pr-url
+        id: pr-url
       - run: echo "${{ steps.pr-url.outputs.url }}"
